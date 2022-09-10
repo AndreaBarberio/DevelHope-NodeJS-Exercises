@@ -1,10 +1,10 @@
-const supertest = require("supertest");
-
-const createApp = require("./app");
+const createApp = require("./app.js");
 
 const app = createApp();
 
 const request = supertest(app);
+const supertest = require("supertest");
+
 
 test("GET /", async () => {
   const response = await request
@@ -12,7 +12,7 @@ test("GET /", async () => {
     .expect(200)
    
 
-  .expect(response).toBe("<html><body><h1>Welcome to the World Wide Web!</h1></body></html>");
+  .expect(response.body).toEqual("<html><body><h1>Welcome to the World Wide Web!</h1></body></html>");
 });
 /*
 Our integration test in app.test.js expects a JSON response.

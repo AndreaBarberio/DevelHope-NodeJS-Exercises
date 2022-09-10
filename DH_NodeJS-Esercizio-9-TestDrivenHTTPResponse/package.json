@@ -11,5 +11,8 @@
   "devDependencies": {
     "jest": "^29.0.2",
     "supertest": "^6.2.4"
+  },
+  "dependencies": {
+    "eslint": "^8.23.0"
   }
 }
