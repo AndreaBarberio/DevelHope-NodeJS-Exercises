@@ -1,26 +1,29 @@
 function luckyDraw(player) {
     return new Promise((resolve, reject) => {
-        const win = Boolean(Math.round(Math.random()));
-
-        process.nextTick(() => {
-            if (win) {
-                resolve(`${player} won a prize in the draw!`);
-            } else {
-                reject(new Error(`${player} lost the draw.`));
-            }
-        });
+      const win = Boolean(Math.round(Math.random()));
+  
+      process.nextTick(() => {
+        if (win) {
+          resolve(`${player} won a prize in the draw!`);
+        } else {
+          reject(new Error(`${player} lost the draw.`));
+        }
+      });
     });
-}
-luckyDraw("Joe").then((res) => console.log(res))
-    .then(() => luckyDraw("Caroline"))
-    .then((res) => console.log(res))
-    .then(() => luckyDraw("Sabrina"))
-    .then((res) => console.log(res))
-    .catch((err) => { console.error(err) })
-//   Promises lucky draw
-
-// The `luckyDraw` function returns a promise.
-// Create a promise chain where the function is called for
-// each of the players: Joe, Caroline and Sabrina
-// Log out the resolved value for each promise and
-// handle any promise rejections in the chain.
+  }
+  
+ async function ageResults (){
+    try {
+      const draw = await Promise.all([
+        await luckyDraw("Tina"),
+        await luckyDraw("Jorge"),
+        await luckyDraw("Julien"),
+      ]);
+  
+      console.log("Results:", draw);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+  ageResults();
