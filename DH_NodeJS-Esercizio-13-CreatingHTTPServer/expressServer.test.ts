@@ -1,5 +1,7 @@
 import supertest from "supertest";
 import app from "./app";
+import {test, expect} from "supertest"
+
 
 const req = supertest(app);
 
@@ -9,5 +11,5 @@ test("GET /planets", async () => {
     .expect(200)
     .expect("Content-Type", /application\/json/);
 
-  expect(res.body).toEqual([{ name: "Mercury" }, { name: "Venus" }]);
+  expect(res.body).toBe([{ name: "Mercury" }, { name: "Venus" }]);
 });
